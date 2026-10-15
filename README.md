@@ -4,5 +4,5 @@
 
 ## Figure
 <div align="center">
-
+  <img src="Method.png" />
 </div>

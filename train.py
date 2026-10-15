@@ -236,7 +236,7 @@ def train(num_epoch):
             pd_ss_loss = sum([pd_ss_par(out_s, label_s) for out_s in outputs_s])/num_classifiers
             entropy_loss = sum([Entropy(F.softmax(out_t, dim=1)) for out_t in outputs_t]) 
 
-            all_loss = source_loss + 4.0 * pd_ss_loss + 0.005 * entropy_loss + 0.01 * supervision_loss
+            all_loss = source_loss + 3.0 * pd_ss_loss + 0.005 * entropy_loss + 0.01 * supervision_loss
             #all_loss = source_loss + 0.01 * entropy_loss + 0.01 * supervision_loss
             all_loss.backward()
             optimizer_g.step()
@@ -300,7 +300,7 @@ def train(num_epoch):
                     pd_st_loss = torch.tensor(0.0)
 
                 #all_loss = 1.0 * loss_dis + 0.01 * entropy_loss + 4.0 * pd_st_loss + 0.01 * gmn_loss
-                all_loss = 1.0 * loss_dis + 0.005 * entropy_loss + 4.0 * pd_st_loss
+                all_loss = 1.0 * loss_dis + 0.005 * entropy_loss + 3.0 * pd_st_loss
                 #all_loss = 1.0 * loss_dis + 0.01 * entropy_loss
 
                 all_loss.backward()
